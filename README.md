@@ -1,0 +1,1 @@
+# rf-school-qr-scanner
