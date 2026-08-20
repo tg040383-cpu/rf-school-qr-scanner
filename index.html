@@ -6,165 +6,377 @@
 <meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width,
-initial-scale=1,
-maximum-scale=1,
-user-scalable=no">
+  name="viewport"
+  content="width=device-width,
+           initial-scale=1,
+           maximum-scale=1,
+           viewport-fit=cover">
+
+<meta
+  name="apple-mobile-web-app-capable"
+  content="yes">
+
+<meta
+  name="mobile-web-app-capable"
+  content="yes">
 
 <title>
-瑞豐國小｜QR Code 掃描器
+瑞豐國小｜QR Code 掃描
 </title>
+
+
+<!--
+  QR Scanner Library
+
+  使用 html5-qrcode
+  GitHub Pages HTTPS
+  iPhone Chrome 相容
+-->
+
+<script
+  src="https://unpkg.com/html5-qrcode"
+  crossorigin="anonymous">
+</script>
+
 
 <style>
 
 * {
-box-sizing: border-box;
--webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
 body {
-margin: 0;
-padding: 0;
-width: 100%;
-min-height: 100%;
-background: #111;
-font-family:
--apple-system,
-BlinkMacSystemFont,
-"Noto Sans TC",
-"PingFang TC",
-"Microsoft JhengHei",
-sans-serif;
+
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  min-height: 100%;
+
+  background: #f4f7fb;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Noto Sans TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif;
+
 }
 
 body {
-color: white;
+
+  color: #263238;
+
+  padding-bottom:
+    env(safe-area-inset-bottom);
+
 }
 
 .header {
-padding: 18px;
-text-align: center;
-background:
-linear-gradient(
-135deg,
-#1f4e78,
-#2e75b6
-);
+
+  background:
+    linear-gradient(
+      135deg,
+      #1f4e78,
+      #2e75b6
+    );
+
+  color: white;
+
+  text-align: center;
+
+  padding:
+    calc(18px + env(safe-area-inset-top))
+    16px
+    18px;
+
 }
 
 .header h1 {
-margin: 0;
-font-size: 21px;
+
+  margin: 0;
+
+  font-size: 22px;
+
 }
 
 .header p {
-margin: 5px 0 0;
-font-size: 13px;
+
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
 }
 
 .container {
-width: 100%;
-max-width: 600px;
-margin: auto;
-padding: 14px;
+
+  max-width: 520px;
+
+  margin: auto;
+
+  padding: 15px;
+
 }
 
 .card {
-background: #1e1e1e;
-border-radius: 18px;
-padding: 16px;
-margin-bottom: 14px;
-}
 
-#reader {
-width: 100%;
-overflow: hidden;
-border-radius: 16px;
-background: #000;
-}
+  background: white;
 
-video {
-width: 100% !important;
-height: auto !important;
-display: block;
+  border-radius: 18px;
+
+  padding: 18px;
+
+  margin-bottom: 15px;
+
+  box-shadow:
+    0 4px 16px
+    rgba(0,0,0,.07);
+
 }
 
 button {
-width: 100%;
-min-height: 52px;
-border: 0;
-border-radius: 14px;
-font-size: 17px;
-font-weight: 700;
-margin-top: 10px;
+
+  width: 100%;
+
+  min-height: 54px;
+
+  border: 0;
+
+  border-radius: 14px;
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  margin-top: 10px;
+
 }
 
 .primary {
-background: #2e75b6;
-color: white;
+
+  background: #1f4e78;
+
+  color: white;
+
 }
 
 .success {
-background: #43a047;
-color: white;
+
+  background: #43a047;
+
+  color: white;
+
 }
 
 .secondary {
-background: #424242;
-color: white;
+
+  background: #eceff1;
+
+  color: #37474f;
+
 }
 
 .danger {
-background: #c62828;
-color: white;
+
+  background: #ffebee;
+
+  color: #c62828;
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  margin-top: 12px;
+
+  line-height: 1.6;
+
+}
+
+.info {
+
+  background: #e3f2fd;
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  line-height: 1.6;
+
+  margin-top: 12px;
+
+}
+
+.ok {
+
+  background: #e8f5e9;
+
+  color: #2e7d32;
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  line-height: 1.6;
+
+  margin-top: 12px;
+
 }
 
 .center {
-text-align: center;
-}
 
-.student-name {
-font-size: 28px;
-font-weight: 800;
-margin: 12px 0;
-}
+  text-align: center;
 
-.points {
-font-size: 40px;
-font-weight: 800;
-color: #90caf9;
-}
-
-.reward {
-background: #333;
-padding: 15px;
-border-radius: 14px;
-margin-top: 10px;
-text-align: left;
-}
-
-.reward strong {
-font-size: 17px;
 }
 
 .hidden {
-display: none !important;
+
+  display: none !important;
+
 }
 
-.status {
-padding: 12px;
-border-radius: 12px;
-background: #263238;
-margin-top: 10px;
-font-size: 14px;
-line-height: 1.6;
+
+/****************************************
+ * Scanner
+ ****************************************/
+
+#reader {
+
+  width: 100%;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background: #000;
+
+  min-height: 280px;
+
 }
 
-.loading {
-text-align: center;
-padding: 20px;
+#reader video {
+
+  width: 100% !important;
+
+  height: auto !important;
+
+  border-radius: 16px;
+
+}
+
+.scanner-status {
+
+  text-align: center;
+
+  font-size: 14px;
+
+  margin: 12px 0;
+
+  color: #607d8b;
+
+}
+
+
+/****************************************
+ * Student
+ ****************************************/
+
+.student-name {
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  margin: 10px 0;
+
+}
+
+.points {
+
+  font-size: 42px;
+
+  font-weight: 800;
+
+  color: #1f4e78;
+
+  margin: 12px 0;
+
+}
+
+
+/****************************************
+ * Category
+ ****************************************/
+
+.category-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 10px;
+
+}
+
+.category {
+
+  background: white;
+
+  border: 2px solid #e0e0e0;
+
+  min-height: 90px;
+
+}
+
+.reward {
+
+  background: white;
+
+  border: 2px solid #e0e0e0;
+
+  text-align: left;
+
+  padding: 14px;
+
+  min-height: 68px;
+
+  margin-bottom: 10px;
+
+}
+
+.reward-points {
+
+  float: right;
+
+  color: #1f4e78;
+
+  font-size: 19px;
+
+  font-weight: 800;
+
+}
+
+textarea {
+
+  width: 100%;
+
+  min-height: 90px;
+
+  border:
+    1px solid #cfd8dc;
+
+  border-radius: 12px;
+
+  padding: 12px;
+
+  font-size: 16px;
+
+  resize: vertical;
+
 }
 
 </style>
@@ -178,11 +390,11 @@ padding: 20px;
 <div class="header">
 
 <h1>
-📷 瑞豐國小 QR Code 掃描器
+📷 瑞豐國小 QR Scanner
 </h1>
 
 <p>
-V1.4.1 iPhone Chrome 穩定版
+V1.5 iPhone Chrome 最終穩定版
 </p>
 
 </div>
@@ -191,50 +403,34 @@ V1.4.1 iPhone Chrome 穩定版
 <div class="container">
 
 
-<!-- 啟動 -->
+<!-- ===================================
+     初始化
+=================================== -->
 
-<div id="startPage">
+<div id="loadingPage">
 
 <div class="card center">
 
-<div style="font-size:60px">
-📷
+<div style="font-size:55px;">
+📱
 </div>
 
 <h2>
-準備掃描學生 QR Code
+正在確認掃描器…
 </h2>
 
-<p>
-請允許 Chrome 使用相機。
+<p id="loadingMessage">
+請稍候
 </p>
 
-<div class="status">
-
-⚠️ 如果第一次使用：
-
-1. 按下「啟用相機」
-
-2. Chrome 出現相機權限時選擇「允許」
-
-3. 將學生 QR Code 放入框內
-
-</div>
-
-<button
-class="primary"
-onclick="startCamera()">
-
-📷 啟用相機
-
-</button>
-
 </div>
 
 </div>
 
 
-<!-- Scanner -->
+<!-- ===================================
+     相機
+=================================== -->
 
 <div
 id="scannerPage"
@@ -242,20 +438,40 @@ class="hidden">
 
 <div class="card">
 
+<h2>
+📷 掃描學生 QR Code
+</h2>
+
 <div
 id="reader">
 </div>
 
 <div
-id="status"
-class="status">
+id="scannerStatus"
+class="scanner-status">
 
-正在準備相機……
+準備啟動相機…
 
 </div>
 
+
+<div
+id="cameraError"
+class="danger hidden">
+</div>
+
+
 <button
-class="danger"
+class="primary"
+onclick="startCamera()">
+
+📷 啟動／重新啟動相機
+
+</button>
+
+
+<button
+class="secondary"
 onclick="stopCamera()">
 
 ⏹ 停止相機
@@ -267,17 +483,15 @@ onclick="stopCamera()">
 </div>
 
 
-<!-- Student -->
+<!-- ===================================
+     學生
+=================================== -->
 
 <div
 id="studentPage"
 class="hidden">
 
 <div class="card center">
-
-<div>
-🎓 學生資料
-</div>
 
 <div
 id="studentClass">
@@ -297,19 +511,215 @@ class="points">
 id="studentLevel">
 </div>
 
-<button
-class="success"
-onclick="goBackToGAS()">
 
-✓ 返回教師積點頁面
+<div
+id="studentMessage"
+class="info">
+</div>
 
-</button>
 
 <button
 class="primary"
-onclick="scanAgain()">
+onclick="showCategories()">
 
-📷 再掃一位學生
+⭐ 開始給點
+
+</button>
+
+
+<button
+class="secondary"
+onclick="backToScanner()">
+
+📷 重新掃描
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ===================================
+     類別
+=================================== -->
+
+<div
+id="categoryPage"
+class="hidden">
+
+<div class="card">
+
+<h2>
+⭐ 選擇獎勵類別
+</h2>
+
+<p id="categoryStudent">
+</p>
+
+
+<div
+id="categoryGrid"
+class="category-grid">
+</div>
+
+
+<button
+class="secondary"
+onclick="backToScanner()">
+
+📷 重新掃描
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ===================================
+     獎勵
+=================================== -->
+
+<div
+id="rewardPage"
+class="hidden">
+
+<div class="card">
+
+<h2 id="rewardTitle">
+選擇獎勵
+</h2>
+
+<div id="rewardList">
+</div>
+
+
+<button
+class="secondary"
+onclick="showCategories()">
+
+← 返回類別
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ===================================
+     確認
+=================================== -->
+
+<div
+id="confirmPage"
+class="hidden">
+
+<div class="card center">
+
+<h2>
+確認給點
+</h2>
+
+
+<div
+id="confirmStudent"
+class="student-name">
+</div>
+
+
+<p id="confirmReward">
+</p>
+
+
+<div
+id="confirmPoints"
+class="points">
+</div>
+
+
+<textarea
+id="remark"
+placeholder="備註（選填）">
+</textarea>
+
+
+<button
+id="submitBtn"
+class="success"
+onclick="submitPoint()">
+
+✓ 確認送出
+
+</button>
+
+
+<button
+class="secondary"
+onclick="showRewards()">
+
+取消
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ===================================
+     成功
+=================================== -->
+
+<div
+id="successPage"
+class="hidden">
+
+<div class="card center">
+
+<div style="font-size:65px;">
+🎉
+</div>
+
+<h2>
+加點成功！
+</h2>
+
+
+<div
+id="successStudent"
+class="student-name">
+</div>
+
+
+<div
+id="successAdd"
+class="points">
+</div>
+
+
+<p>
+目前累積
+</p>
+
+
+<div
+id="successTotal"
+class="points">
+</div>
+
+
+<div
+id="successLevel">
+</div>
+
+
+<button
+class="primary"
+onclick="backToScanner()">
+
+📷 繼續掃描
 
 </button>
 
@@ -323,35 +733,62 @@ onclick="scanAgain()">
 
 <script>
 
+
 /*************************************************
- * 設定
+ * GAS API
  *************************************************/
 
-const GAS_URL =
+const GAS_API =
 'https://script.google.com/a/macros/mail.rfes.tyc.edu.tw/s/AKfycbxVyxRnr4i071HzDjXZ43HL_LVbkqZgxWkTgdy8u8_lSwq5H2HsD_Qj-MSwW_spozcE/exec';
 
 
-const params =
-new URLSearchParams(
-window.location.search
-);
+/*************************************************
+ * 系統變數
+ *************************************************/
+
+let teacherId = '';
+
+let token = '';
+
+let scanner = null;
+
+let scannerRunning = false;
+
+let scanLocked = false;
+
+let student = null;
+
+let rewards = [];
+
+let selectedCategory = '';
+
+let selectedReward = null;
 
 
-const teacher =
-params.get('teacher') || '';
+/*************************************************
+ * 讀取 URL
+ *************************************************/
+
+function getUrlParams() {
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
 
 
-const token =
-params.get('token') || '';
+  teacherId =
+    params.get(
+      'teacher'
+    ) || '';
 
 
-let stream = null;
+  token =
+    params.get(
+      'token'
+    ) || '';
 
-let scanning = false;
-
-let scanTimer = null;
-
-let detector = null;
+}
 
 
 /*************************************************
@@ -359,600 +796,520 @@ let detector = null;
  *************************************************/
 
 document.addEventListener(
-'DOMContentLoaded',
-function() {
+  'DOMContentLoaded',
+  function() {
 
-if (!teacher || !token) {
+    getUrlParams();
 
-setStatus(
-'Scanner 連線資訊不完整，請從教師積點頁面重新開啟。'
-);
 
-return;
+    if (
+      !teacherId ||
+      !token
+    ) {
 
-}
+      showFatal(
+        '缺少 Scanner Token。<br><br>' +
+        '請回到教師積點系統重新點擊「掃描學生 QR Code」。'
+      );
 
-setStatus(
-'已取得教師驗證資訊，請按「啟用相機」。'
-);
+      return;
 
-}
+    }
+
+
+    api(
+      'ping',
+      {},
+      function(result) {
+
+        if (
+          !result.success
+        ) {
+
+          showFatal(
+            result.message ||
+            'API 無法連線'
+          );
+
+          return;
+
+        }
+
+
+        document
+          .getElementById(
+            'loadingPage'
+          )
+          .classList
+          .add('hidden');
+
+
+        document
+          .getElementById(
+            'scannerPage'
+          )
+          .classList
+          .remove('hidden');
+
+
+        /*
+         * 不自動開相機。
+         *
+         * iPhone Chrome 對使用者手勢
+         * 啟動相機最穩定。
+         */
+
+        setStatus(
+          '請按「啟動／重新啟動相機」'
+        );
+
+      }
+    );
+
+  }
 );
 
 
 /*************************************************
- * Status
+ * API JSONP
  *************************************************/
 
-function setStatus(text) {
+function api(
+  action,
+  params,
+  callback
+) {
 
-const el =
-document.getElementById(
-'status'
-);
+  const callbackName =
+    'rfCallback_' +
+    Date.now() +
+    '_' +
+    Math.floor(
+      Math.random() * 100000
+    );
 
-if (el) {
-el.innerText = text;
-}
+
+  const script =
+    document.createElement(
+      'script'
+    );
+
+
+  const query =
+    new URLSearchParams();
+
+
+  query.set(
+    'api',
+    '1'
+  );
+
+
+  query.set(
+    'action',
+    action
+  );
+
+
+  query.set(
+    'teacher',
+    teacherId
+  );
+
+
+  query.set(
+    'token',
+    token
+  );
+
+
+  query.set(
+    'callback',
+    callbackName
+  );
+
+
+  Object.keys(
+    params || {}
+  ).forEach(
+    function(key) {
+
+      query.set(
+        key,
+        params[key]
+      );
+
+    }
+  );
+
+
+  let finished = false;
+
+
+  window[callbackName] =
+    function(result) {
+
+      finished = true;
+
+
+      try {
+
+        callback(
+          result
+        );
+
+      } finally {
+
+        delete window[
+          callbackName
+        ];
+
+        script.remove();
+
+      }
+
+    };
+
+
+  script.onerror =
+    function() {
+
+      if (finished) {
+
+        return;
+
+      }
+
+
+      delete window[
+        callbackName
+      ];
+
+
+      script.remove();
+
+
+      callback({
+
+        success: false,
+
+        message:
+          '無法連線至 Google Apps Script。'
+
+      });
+
+    };
+
+
+  script.src =
+    GAS_API +
+    '?' +
+    query.toString();
+
+
+  document
+    .body
+    .appendChild(
+      script
+    );
 
 }
 
 
 /*************************************************
- * 啟用相機
+ * 相機錯誤說明
+ *************************************************/
+
+function cameraErrorMessage(
+  error
+) {
+
+  if (!error) {
+
+    return '未知相機錯誤';
+
+  }
+
+
+  const name =
+    error.name || '';
+
+
+  if (
+    name ===
+    'NotAllowedError'
+  ) {
+
+    return (
+      '❌ 相機權限被拒絕。<br><br>' +
+
+      '請到 iPhone：<br>' +
+
+      '設定 → 隱私權與安全性 → 相機 → Chrome → 開啟<br><br>' +
+
+      '然後重新回到本頁。'
+    );
+
+  }
+
+
+  if (
+    name ===
+    'NotFoundError'
+  ) {
+
+    return (
+      '❌ 找不到相機。<br><br>' +
+      '請確認 iPhone 相機正常。'
+    );
+
+  }
+
+
+  if (
+    name ===
+    'NotReadableError'
+  ) {
+
+    return (
+      '❌ 相機目前被其他程式使用。<br><br>' +
+      '請關閉其他使用相機的 App 後再試。'
+    );
+
+  }
+
+
+  if (
+    name ===
+    'SecurityError'
+  ) {
+
+    return (
+      '❌ 瀏覽器安全限制。<br><br>' +
+      '請確認目前網址是 HTTPS。'
+    );
+
+  }
+
+
+  if (
+    name ===
+    'AbortError'
+  ) {
+
+    return (
+      '❌ 相機啟動被中止，請再按一次啟動相機。'
+    );
+
+  }
+
+
+  return (
+    '❌ 相機無法啟用。<br><br>' +
+    '錯誤：' +
+    escapeHtml(
+      name
+    ) +
+    '<br>' +
+    escapeHtml(
+      error.message || ''
+    )
+  );
+
+}
+
+
+/*************************************************
+ * 啟動相機
  *************************************************/
 
 async function startCamera() {
 
-if (!teacher || !token) {
+  clearCameraError();
 
-alert(
-'缺少教師驗證資訊，請重新從教師頁面開啟。'
-);
 
-return;
+  if (
+    !window.isSecureContext
+  ) {
 
-}
+    showCameraError(
+      '❌ 目前不是安全 HTTPS 網頁。<br><br>' +
+      '請確認網址是：<br>' +
+      'https://tg040383-cpu.github.io/...'
+    );
 
+    return;
 
-if (!window.isSecureContext) {
+  }
 
-alert(
-'目前不是 HTTPS 安全連線。\n\n請確認使用 GitHub Pages 網址。'
-);
 
-return;
+  if (
+    !navigator.mediaDevices ||
+    !navigator.mediaDevices.getUserMedia
+  ) {
 
-}
+    showCameraError(
+      '❌ 此瀏覽器不支援手機相機 API。<br><br>' +
+      '請使用最新版 iPhone Chrome。'
+    );
 
+    return;
 
-if (
-!navigator.mediaDevices ||
-!navigator.mediaDevices.getUserMedia
-) {
+  }
 
-alert(
-'此瀏覽器不支援相機功能。請使用最新版 iPhone Chrome。'
-);
 
-return;
+  await stopCamera();
 
-}
 
+  scanLocked = false;
 
-try {
 
-stopCamera();
+  setStatus(
+    '正在啟動相機…'
+  );
 
 
-document
-.getElementById('startPage')
-.classList
-.add('hidden');
+  try {
 
+    /*
+     * 先直接測試相機權限。
+     *
+     * 這一步非常重要。
+     */
 
-document
-.getElementById('studentPage')
-.classList
-.add('hidden');
+    const stream =
+      await navigator
+        .mediaDevices
+        .getUserMedia({
 
+          video: {
 
-document
-.getElementById('scannerPage')
-.classList
-.remove('hidden');
+            facingMode: {
+              ideal: 'environment'
+            }
 
+          },
 
-setStatus(
-'正在要求相機權限……'
-);
+          audio: false
 
+        });
 
-/*************************************************
- * iPhone Chrome 建議設定
- *************************************************/
 
-stream =
-await navigator.mediaDevices.getUserMedia({
+    /*
+     * 測試成功後立即關閉。
+     * html5-qrcode 接手真正掃描。
+     */
 
-video: {
+    stream
+      .getTracks()
+      .forEach(
+        function(track) {
 
-facingMode: {
-ideal: 'environment'
-},
+          track.stop();
 
-width: {
-ideal: 1280
-},
+        }
+      );
 
-height: {
-ideal: 720
-}
 
-},
+    scanner =
+      new Html5Qrcode(
+        'reader'
+      );
 
-audio: false
 
-});
+    await scanner.start(
 
+      {
+        facingMode:
+          {
+            ideal:
+              'environment'
+          }
+      },
 
-/*************************************************
- * 建立 Video
- *************************************************/
+      {
 
-const reader =
-document.getElementById(
-'reader'
-);
+        fps: 10,
 
-reader.innerHTML = '';
+        qrbox:
+          function(
+            width,
+            height
+          ) {
 
+            const size =
+              Math.min(
+                width,
+                height
+              ) * 0.70;
 
-const video =
-document.createElement(
-'video'
-);
 
-video.id = 'cameraVideo';
+            return {
 
-video.setAttribute(
-'autoplay',
-''
-);
+              width:
+                Math.floor(
+                  size
+                ),
 
-video.setAttribute(
-'playsinline',
-''
-);
+              height:
+                Math.floor(
+                  size
+                )
 
-video.setAttribute(
-'muted',
-''
-);
+            };
 
-video.muted = true;
+          },
 
-reader.appendChild(video);
+        aspectRatio:
+          1.0,
 
+        disableFlip:
+          false
 
-video.srcObject =
-stream;
+      },
 
+      function(decodedText) {
 
-await video.play();
+        onScanSuccess(
+          decodedText
+        );
 
+      },
 
-setStatus(
-'📷 相機已啟用，請將學生 QR Code 對準畫面。'
-);
+      function(errorMessage) {
 
+        /*
+         * 不要一直顯示掃描失敗。
+         * QR 尚未進入畫面時這是正常的。
+         */
 
-/*************************************************
- * BarcodeDetector
- *************************************************/
+      }
 
-if (
-'BarcodeDetector'
-in window
-) {
+    );
 
-try {
 
-detector =
-new BarcodeDetector({
-formats: ['qr_code']
-});
+    scannerRunning =
+      true;
 
-} catch (e) {
 
-detector = null;
+    setStatus(
+      '📷 相機已啟動，請將學生 QR Code 對準框框'
+    );
 
-}
 
-}
+  } catch (error) {
 
+    scannerRunning =
+      false;
 
-scanning = true;
 
+    showCameraError(
+      cameraErrorMessage(
+        error
+      )
+    );
 
-/*************************************************
- * 開始掃描
- *************************************************/
-
-scanLoop(video);
-
-} catch (error) {
-
-console.error(error);
-
-stopCamera();
-
-document
-.getElementById('startPage')
-.classList
-.remove('hidden');
-
-document
-.getElementById('scannerPage')
-.classList
-.add('hidden');
-
-
-let message =
-'無法啟用相機。';
-
-
-if (
-error &&
-error.name ===
-'NotAllowedError'
-) {
-
-message +=
-'\n\n請到 iPhone：設定 → Chrome → 相機 → 開啟。';
-
-} else if (
-error &&
-error.name ===
-'NotFoundError'
-) {
-
-message +=
-'\n\n找不到可使用的相機。';
-
-} else if (
-error &&
-error.name ===
-'NotReadableError'
-) {
-
-message +=
-'\n\n相機可能正在被其他 App 使用。';
-
-} else if (
-error &&
-error.name ===
-'SecurityError'
-) {
-
-message +=
-'\n\n瀏覽器安全性限制了相機。';
-
-} else {
-
-message +=
-'\n\n錯誤：' +
-(error.message || error);
-
-}
-
-
-alert(message);
-
-}
-
-}
-
-
-/*************************************************
- * 掃描 Loop
- *************************************************/
-
-async function scanLoop(video) {
-
-if (!scanning) {
-return;
-}
-
-
-if (
-detector &&
-video.readyState >= 2
-) {
-
-try {
-
-const codes =
-await detector.detect(video);
-
-
-if (codes.length > 0) {
-
-const value =
-codes[0].rawValue;
-
-if (value) {
-
-scanning = false;
-
-await handleQR(value);
-
-return;
-
-}
-
-}
-
-} catch (error) {
-
-console.log(
-'BarcodeDetector:',
-error
-);
-
-}
-
-}
-
-
-scanTimer =
-setTimeout(
-function() {
-
-scanLoop(video);
-
-},
-250
-);
-
-}
-
-
-/*************************************************
- * QR 處理
- *************************************************/
-
-async function handleQR(qrValue) {
-
-setStatus(
-'🔍 已讀取 QR Code，正在查詢學生……'
-);
-
-
-stopCamera();
-
-
-/*************************************************
- * 如果 QR 本身是網址
- *************************************************/
-
-let qrId =
-qrValue.trim();
-
-
-try {
-
-const url =
-new URL(qrId);
-
-
-/*
- * 支援：
- *
- * ?qr=XXXX
- * ?student=XXXX
- */
-
-qrId =
-url.searchParams.get('qr') ||
-url.searchParams.get('student') ||
-qrId;
-
-} catch (e) {
-
-}
-
-
-/*************************************************
- * JSONP 查詢 GAS
- *************************************************/
-
-jsonp(
-'student',
-{
-token: token,
-qr: qrId
-},
-function(result) {
-
-if (!result.success) {
-
-alert(
-result.message ||
-'找不到學生資料。'
-);
-
-document
-.getElementById('startPage')
-.classList
-.remove('hidden');
-
-return;
-
-}
-
-
-showStudent(
-result.student
-);
-
-}
-);
-
-}
-
-
-/*************************************************
- * JSONP
- *************************************************/
-
-function jsonp(
-action,
-params,
-callback
-) {
-
-const callbackName =
-'rfJsonp_' +
-Date.now() +
-'_' +
-Math.floor(
-Math.random() * 100000
-);
-
-
-window[callbackName] =
-function(data) {
-
-try {
-
-callback(data);
-
-} finally {
-
-delete window[callbackName];
-
-if (script.parentNode) {
-script.parentNode.removeChild(
-script
-);
-}
-
-}
-
-};
-
-
-const query = {
-
-api: '1',
-
-action: action,
-
-callback:
-callbackName,
-
-...params
-
-};
-
-
-const qs =
-Object.keys(query)
-.map(function(key) {
-
-return (
-encodeURIComponent(key) +
-'=' +
-encodeURIComponent(
-query[key]
-)
-);
-
-})
-.join('&');
-
-
-const script =
-document.createElement(
-'script'
-);
-
-script.src =
-GAS_URL +
-'?' +
-qs;
-
-
-script.onerror =
-function() {
-
-delete window[callbackName];
-
-alert(
-'無法連線到積點系統。'
-);
-
-};
-
-
-document
-.body
-.appendChild(script);
-
-}
-
-
-/*************************************************
- * 顯示學生
- *************************************************/
-
-function showStudent(student) {
-
-document
-.getElementById('scannerPage')
-.classList
-.add('hidden');
-
-
-document
-.getElementById('startPage')
-.classList
-.add('hidden');
-
-
-document
-.getElementById('studentPage')
-.classList
-.remove('hidden');
-
-
-document
-.getElementById('studentClass')
-.innerText =
-(student.className || '') +
-'　' +
-(student.seatNo || '') +
-'號';
-
-
-document
-.getElementById('studentName')
-.innerText =
-student.name || '';
-
-
-document
-.getElementById('studentPoints')
-.innerText =
-(student.points || 0) +
-' 點';
-
-
-document
-.getElementById('studentLevel')
-.innerText =
-student.level || '';
+  }
 
 }
 
@@ -961,104 +1318,907 @@ student.level || '';
  * 停止相機
  *************************************************/
 
-function stopCamera() {
+async function stopCamera() {
 
-scanning = false;
+  if (
+    scanner &&
+    scannerRunning
+  ) {
 
+    try {
 
-if (scanTimer) {
+      await scanner.stop();
 
-clearTimeout(
-scanTimer
-);
+    } catch (e) {
 
-scanTimer = null;
+    }
 
-}
-
-
-if (stream) {
-
-stream
-.getTracks()
-.forEach(
-function(track) {
-
-track.stop();
-
-}
-);
-
-stream = null;
-
-}
+  }
 
 
-const video =
-document.getElementById(
-'cameraVideo'
-);
+  if (scanner) {
+
+    try {
+
+      await scanner.clear();
+
+    } catch (e) {
+
+    }
+
+  }
 
 
-if (video) {
+  scanner = null;
 
-video.srcObject =
-null;
-
-}
+  scannerRunning =
+    false;
 
 }
 
 
 /*************************************************
- * 再掃描
+ * 掃描成功
  *************************************************/
 
-function scanAgain() {
+async function onScanSuccess(
+  decodedText
+) {
 
-document
-.getElementById('studentPage')
-.classList
-.add('hidden');
+  if (
+    scanLocked
+  ) {
 
-document
-.getElementById('startPage')
-.classList
-.remove('hidden');
+    return;
 
-setStatus(
-'請按「啟用相機」開始下一次掃描。'
-);
+  }
+
+
+  scanLocked = true;
+
+
+  await stopCamera();
+
+
+  setStatus(
+    '正在讀取學生資料…'
+  );
+
+
+  api(
+    'student',
+    {
+      qr:
+        decodedText
+    },
+    function(result) {
+
+      if (
+        !result.success
+      ) {
+
+        alert(
+          result.message ||
+          '找不到學生'
+        );
+
+
+        scanLocked =
+          false;
+
+
+        showScanner();
+
+
+        return;
+
+      }
+
+
+      student =
+        result.student;
+
+
+      showStudent();
+
+    }
+  );
 
 }
 
 
 /*************************************************
- * 返回 GAS
+ * 顯示學生
  *************************************************/
 
-function goBackToGAS() {
+function showStudent() {
 
-window.location.href =
-'https://script.google.com/a/macros/mail.rfes.tyc.edu.tw/s/AKfycbxVyxRnr4i071HzDjXZ43HL_LVbkqZgxWkTgdy8u8_lSwq5H2HsD_Qj-MSwW_spozcE/exec';
+  hideAll();
+
+
+  document
+    .getElementById(
+      'studentPage'
+    )
+    .classList
+    .remove('hidden');
+
+
+  document
+    .getElementById(
+      'studentClass'
+    )
+    .innerText =
+    student.className +
+    '　' +
+    student.seatNo +
+    '號';
+
+
+  document
+    .getElementById(
+      'studentName'
+    )
+    .innerText =
+    student.name;
+
+
+  document
+    .getElementById(
+      'studentPoints'
+    )
+    .innerText =
+    student.points +
+    ' 點';
+
+
+  document
+    .getElementById(
+      'studentLevel'
+    )
+    .innerText =
+    student.level;
+
+
+  document
+    .getElementById(
+      'studentMessage'
+    )
+    .innerText =
+    '已成功讀取學生資料。';
 
 }
 
 
 /*************************************************
- * 離開頁面
+ * 顯示類別
+ *************************************************/
+
+function showCategories() {
+
+  hideAll();
+
+
+  document
+    .getElementById(
+      'categoryPage'
+    )
+    .classList
+    .remove('hidden');
+
+
+  document
+    .getElementById(
+      'categoryStudent'
+    )
+    .innerText =
+    student.className +
+    '　' +
+    student.name;
+
+
+  /*
+   * 每次進入都重新取得獎勵。
+   */
+
+  api(
+    'rewards',
+    {},
+    function(result) {
+
+      if (
+        !result.success
+      ) {
+
+        alert(
+          result.message
+        );
+
+        return;
+
+      }
+
+
+      rewards =
+        result.rewards || [];
+
+
+      renderCategories();
+
+    }
+  );
+
+}
+
+
+/*************************************************
+ * 類別
+ *************************************************/
+
+function renderCategories() {
+
+  const categories =
+    [
+      ...new Set(
+        rewards.map(
+          function(item) {
+
+            return item.category;
+
+          }
+        )
+      )
+    ];
+
+
+  const icons = {
+
+    '品德': '🌱',
+
+    '學習': '📚',
+
+    '服務': '🤝',
+
+    '整潔': '🧹',
+
+    '安全': '🛡️',
+
+    '榮譽': '🏆'
+
+  };
+
+
+  const grid =
+    document
+      .getElementById(
+        'categoryGrid'
+      );
+
+
+  grid.innerHTML = '';
+
+
+  categories.forEach(
+    function(category) {
+
+      const button =
+        document.createElement(
+          'button'
+        );
+
+
+      button.className =
+        'category';
+
+
+      button.innerHTML =
+
+        (icons[category] || '⭐') +
+
+        '<br><strong>' +
+
+        escapeHtml(
+          category
+        ) +
+
+        '</strong>';
+
+
+      button.onclick =
+        function() {
+
+          showRewards(
+            category
+          );
+
+        };
+
+
+      grid.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+
+/*************************************************
+ * 顯示獎勵
+ *************************************************/
+
+function showRewards(
+  category
+) {
+
+  selectedCategory =
+    category;
+
+
+  hideAll();
+
+
+  document
+    .getElementById(
+      'rewardPage'
+    )
+    .classList
+    .remove('hidden');
+
+
+  document
+    .getElementById(
+      'rewardTitle'
+    )
+    .innerText =
+    category +
+    '｜選擇行為';
+
+
+  const list =
+    document
+      .getElementById(
+        'rewardList'
+      );
+
+
+  list.innerHTML = '';
+
+
+  rewards
+
+    .filter(
+      function(item) {
+
+        return (
+          item.category ===
+          category
+        );
+
+      }
+    )
+
+    .forEach(
+      function(item) {
+
+        const button =
+          document.createElement(
+            'button'
+          );
+
+
+        button.className =
+          'reward';
+
+
+        button.innerHTML =
+
+          '<span class="reward-points">' +
+
+          '+' +
+          escapeHtml(
+            item.points
+          ) +
+
+          '</span>' +
+
+          '<strong>' +
+
+          escapeHtml(
+            item.name
+          ) +
+
+          '</strong>' +
+
+          '<br>' +
+
+          '<small>' +
+
+          escapeHtml(
+            item.description || ''
+          ) +
+
+          '</small>';
+
+
+        button.onclick =
+          function() {
+
+            selectReward(
+              item
+            );
+
+          };
+
+
+        list.appendChild(
+          button
+        );
+
+      }
+    );
+
+}
+
+
+/*************************************************
+ * 選擇獎勵
+ *************************************************/
+
+function selectReward(
+  item
+) {
+
+  selectedReward =
+    item;
+
+
+  hideAll();
+
+
+  document
+    .getElementById(
+      'confirmPage'
+    )
+    .classList
+    .remove('hidden');
+
+
+  document
+    .getElementById(
+      'confirmStudent'
+    )
+    .innerText =
+    student.name;
+
+
+  document
+    .getElementById(
+      'confirmReward'
+    )
+    .innerText =
+    item.name;
+
+
+  document
+    .getElementById(
+      'confirmPoints'
+    )
+    .innerText =
+    '+' +
+    item.points +
+    ' 點';
+
+
+  document
+    .getElementById(
+      'remark'
+    )
+    .value = '';
+
+}
+
+
+/*************************************************
+ * 送出
+ *************************************************/
+
+function submitPoint() {
+
+  if (
+    !student ||
+    !selectedReward
+  ) {
+
+    alert(
+      '資料不完整'
+    );
+
+    return;
+
+  }
+
+
+  const button =
+    document
+      .getElementById(
+        'submitBtn'
+      );
+
+
+  button.disabled =
+    true;
+
+
+  button.innerText =
+    '送出中…';
+
+
+  api(
+    'addPoint',
+    {
+
+      studentId:
+        student.id,
+
+      rewardId:
+        selectedReward.id,
+
+      remark:
+        document
+          .getElementById(
+            'remark'
+          )
+          .value
+          .trim()
+
+    },
+    function(result) {
+
+      button.disabled =
+        false;
+
+
+      button.innerText =
+        '✓ 確認送出';
+
+
+      if (
+        !result.success
+      ) {
+
+        alert(
+          '加點失敗：\n' +
+          result.message
+        );
+
+        return;
+
+      }
+
+
+      showSuccess(
+        result
+      );
+
+    }
+  );
+
+}
+
+
+/*************************************************
+ * 成功
+ *************************************************/
+
+function showSuccess(
+  result
+) {
+
+  hideAll();
+
+
+  document
+    .getElementById(
+      'successPage'
+    )
+    .classList
+    .remove('hidden');
+
+
+  document
+    .getElementById(
+      'successStudent'
+    )
+    .innerText =
+    result.student.name;
+
+
+  document
+    .getElementById(
+      'successAdd'
+    )
+    .innerText =
+    '+' +
+    result.reward.points +
+    ' 點';
+
+
+  document
+    .getElementById(
+      'successTotal'
+    )
+    .innerText =
+    result.totalPoints +
+    ' 點';
+
+
+  document
+    .getElementById(
+      'successLevel'
+    )
+    .innerText =
+    result.level;
+
+}
+
+
+/*************************************************
+ * 返回 Scanner
+ *************************************************/
+
+function backToScanner() {
+
+  student = null;
+
+  selectedReward = null;
+
+  selectedCategory = '';
+
+  scanLocked = false;
+
+
+  hideAll();
+
+
+  document
+    .getElementById(
+      'scannerPage'
+    )
+    .classList
+    .remove('hidden');
+
+
+  setStatus(
+    '請按「啟動／重新啟動相機」'
+  );
+
+}
+
+
+/*************************************************
+ * 返回獎勵
+ *************************************************/
+
+function showRewards() {
+
+  showRewards(
+    selectedCategory
+  );
+
+}
+
+
+/*************************************************
+ * 顯示 Scanner
+ *************************************************/
+
+function showScanner() {
+
+  hideAll();
+
+
+  document
+    .getElementById(
+      'scannerPage'
+    )
+    .classList
+    .remove('hidden');
+
+
+  setStatus(
+    '請按「啟動／重新啟動相機」'
+  );
+
+}
+
+
+/*************************************************
+ * 隱藏全部
+ *************************************************/
+
+function hideAll() {
+
+  [
+
+    'loadingPage',
+
+    'scannerPage',
+
+    'studentPage',
+
+    'categoryPage',
+
+    'rewardPage',
+
+    'confirmPage',
+
+    'successPage'
+
+  ].forEach(
+    function(id) {
+
+      document
+        .getElementById(id)
+        .classList
+        .add('hidden');
+
+    }
+  );
+
+}
+
+
+/*************************************************
+ * 相機狀態
+ *************************************************/
+
+function setStatus(
+  message
+) {
+
+  document
+    .getElementById(
+      'scannerStatus'
+    )
+    .innerText =
+    message;
+
+}
+
+
+/*************************************************
+ * 相機錯誤
+ *************************************************/
+
+function showCameraError(
+  message
+) {
+
+  const box =
+    document
+      .getElementById(
+        'cameraError'
+      );
+
+
+  box.innerHTML =
+    message;
+
+
+  box.classList
+    .remove('hidden');
+
+
+  setStatus(
+    '相機啟動失敗'
+  );
+
+}
+
+
+/*************************************************
+ * 清除錯誤
+ *************************************************/
+
+function clearCameraError() {
+
+  document
+    .getElementById(
+      'cameraError'
+    )
+    .classList
+    .add('hidden');
+
+}
+
+
+/*************************************************
+ * 系統錯誤
+ *************************************************/
+
+function showFatal(
+  message
+) {
+
+  document
+    .getElementById(
+      'loadingPage'
+    )
+    .classList
+    .remove('hidden');
+
+
+  document
+    .getElementById(
+      'loadingMessage'
+    )
+    .innerHTML =
+    '<div class="danger">' +
+    message +
+    '</div>';
+
+}
+
+
+/*************************************************
+ * HTML 安全
+ *************************************************/
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value == null
+      ? ''
+      : value
+  )
+
+    .replace(
+      /&/g,
+      '&amp;'
+    )
+
+    .replace(
+      /</g,
+      '&lt;'
+    )
+
+    .replace(
+      />/g,
+      '&gt;'
+    )
+
+    .replace(
+      /"/g,
+      '&quot;'
+    )
+
+    .replace(
+      /'/g,
+      '&#039;'
+    );
+
+}
+
+
+/*************************************************
+ * 離開頁面時關閉相機
  *************************************************/
 
 window.addEventListener(
-'beforeunload',
-function() {
+  'pagehide',
+  function() {
 
-stopCamera();
+    stopCamera();
 
-}
+  }
 );
 
 </script>
+
 
 </body>
 
