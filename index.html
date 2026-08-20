@@ -7,26 +7,19 @@
 
   <meta
     name="viewport"
-    content="width=device-width,
-             initial-scale=1,
-             maximum-scale=1,
-             viewport-fit=cover">
-
-  <meta
-    name="apple-mobile-web-app-capable"
-    content="yes">
-
-  <meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="default">
+    content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
   <title>瑞豐國小｜QR Code 掃描</title>
 
 
-  <!-- QR Code Scanner -->
+  <!--
+    html5-qrcode
+    用於 iPhone Chrome 相機掃描
+  -->
 
   <script
-    src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js">
+    src="https://unpkg.com/html5-qrcode"
+    type="text/javascript">
   </script>
 
 
@@ -34,24 +27,17 @@
 
     * {
       box-sizing: border-box;
-
-      -webkit-tap-highlight-color:
-        transparent;
+      -webkit-tap-highlight-color: transparent;
     }
 
 
-    html,
     body {
 
       margin: 0;
 
-      padding: 0;
+      background: #f4f7fb;
 
-      width: 100%;
-
-      min-height: 100%;
-
-      background: #f3f6fa;
+      color: #263238;
 
       font-family:
         -apple-system,
@@ -64,18 +50,6 @@
     }
 
 
-    body {
-
-      padding-bottom:
-        env(safe-area-inset-bottom);
-
-    }
-
-
-    /* =========================
-       頁首
-       ========================= */
-
     .header {
 
       background:
@@ -87,61 +61,40 @@
 
       color: white;
 
-      padding:
-        24px
-        18px
-        22px;
+      padding: 22px 16px;
 
       text-align: center;
 
     }
 
 
-    .header-icon {
-
-      font-size: 46px;
-
-      margin-bottom: 4px;
-
-    }
-
-
-    .header-title {
-
-      font-size: 24px;
-
-      font-weight: 800;
+    .header h1 {
 
       margin: 0;
 
-    }
-
-
-    .header-subtitle {
-
-      font-size: 14px;
-
-      margin-top: 6px;
-
-      opacity: .9;
+      font-size: 23px;
 
     }
 
 
-    /* =========================
-       主內容
-       ========================= */
+    .header p {
+
+      margin: 6px 0 0;
+
+      font-size: 13px;
+
+    }
+
 
     .container {
 
       width: 100%;
 
-      max-width: 560px;
+      max-width: 520px;
 
-      margin: 0 auto;
+      margin: auto;
 
-      padding:
-        16px;
+      padding: 16px;
 
     }
 
@@ -150,175 +103,29 @@
 
       background: white;
 
-      border-radius: 20px;
+      border-radius: 18px;
 
-      padding: 18px;
+      padding: 20px;
+
+      margin-bottom: 16px;
 
       box-shadow:
-        0 5px 18px
-        rgba(0, 0, 0, .08);
+        0 4px 15px
+        rgba(0,0,0,.07);
 
     }
 
-
-    .title {
-
-      text-align: center;
-
-      font-size: 21px;
-
-      font-weight: 800;
-
-      color: #263238;
-
-      margin-bottom: 8px;
-
-    }
-
-
-    .description {
-
-      text-align: center;
-
-      color: #607d8b;
-
-      font-size: 14px;
-
-      line-height: 1.7;
-
-      margin-bottom: 18px;
-
-    }
-
-
-    /* =========================
-       Scanner
-       ========================= */
 
     #reader {
 
       width: 100%;
 
-      min-height: 280px;
-
-      background: #000;
-
-      border-radius: 18px;
-
       overflow: hidden;
 
-      position: relative;
+      border-radius: 15px;
 
     }
 
-
-    #reader video {
-
-      width: 100% !important;
-
-      height: auto !important;
-
-      max-height: 65vh;
-
-      object-fit: cover;
-
-      border-radius: 18px;
-
-    }
-
-
-    #reader img {
-
-      max-width: 100%;
-
-    }
-
-
-    /*
-      隱藏 html5-qrcode 原本的
-      一些不必要文字
-    */
-
-    #reader__dashboard_section_swaplink {
-
-      color: #1f4e78 !important;
-
-    }
-
-
-    #reader__dashboard_section_csr {
-
-      margin-top: 10px;
-
-    }
-
-
-    #reader__dashboard_section_csr button {
-
-      border: 0 !important;
-
-      border-radius: 10px !important;
-
-      padding: 10px 16px !important;
-
-      background: #1f4e78 !important;
-
-      color: white !important;
-
-    }
-
-
-    /* =========================
-       狀態
-       ========================= */
-
-    .status {
-
-      margin-top: 14px;
-
-      padding: 13px;
-
-      border-radius: 12px;
-
-      text-align: center;
-
-      font-size: 14px;
-
-      line-height: 1.6;
-
-    }
-
-
-    .status.info {
-
-      background: #e3f2fd;
-
-      color: #1565c0;
-
-    }
-
-
-    .status.success {
-
-      background: #e8f5e9;
-
-      color: #2e7d32;
-
-    }
-
-
-    .status.error {
-
-      background: #ffebee;
-
-      color: #c62828;
-
-    }
-
-
-    /* =========================
-       按鈕
-       ========================= */
 
     button {
 
@@ -334,7 +141,9 @@
 
       font-weight: 700;
 
-      cursor: pointer;
+      margin-top: 12px;
+
+      font-family: inherit;
 
     }
 
@@ -357,82 +166,55 @@
     }
 
 
-    .retry {
+    .success {
 
-      margin-top: 14px;
+      background: #43a047;
+
+      color: white;
 
     }
 
 
-    /* =========================
-       成功畫面
-       ========================= */
-
-    .success-box {
+    .center {
 
       text-align: center;
 
-      padding: 20px 10px;
+    }
+
+
+    .icon {
+
+      font-size: 58px;
+
+      margin-bottom: 10px;
 
     }
 
 
-    .success-icon {
+    .status {
 
-      font-size: 70px;
-
-      margin-bottom: 8px;
-
-    }
-
-
-    .success-title {
-
-      font-size: 24px;
-
-      font-weight: 800;
-
-      color: #2e7d32;
-
-    }
-
-
-    .qr-result {
-
-      margin-top: 12px;
-
-      padding: 12px;
-
-      background: #f5f5f5;
-
-      border-radius: 10px;
-
-      font-family: monospace;
-
-      word-break: break-all;
-
-    }
-
-
-    /* =========================
-       說明
-       ========================= */
-
-    .help {
-
-      margin-top: 15px;
-
-      padding: 15px;
-
-      background: #fff8e1;
+      padding: 13px;
 
       border-radius: 12px;
 
-      color: #6d4c41;
+      background: #e3f2fd;
+
+      color: #1565c0;
+
+      margin-bottom: 15px;
+
+      text-align: center;
 
       font-size: 14px;
 
-      line-height: 1.7;
+    }
+
+
+    .error {
+
+      background: #ffebee;
+
+      color: #c62828;
 
     }
 
@@ -444,19 +226,22 @@
     }
 
 
-    /* =========================
-       Footer
-       ========================= */
+    .teacher {
 
-    .footer {
+      font-weight: 700;
 
-      text-align: center;
+      color: #1f4e78;
 
-      color: #90a4ae;
+    }
 
-      font-size: 12px;
 
-      padding: 18px 0 25px;
+    .tip {
+
+      font-size: 13px;
+
+      line-height: 1.7;
+
+      color: #607d8b;
 
     }
 
@@ -469,23 +254,15 @@
 <body>
 
 
-<!-- =========================
-     Header
-     ========================= -->
-
 <div class="header">
 
-  <div class="header-icon">
-    📷
-  </div>
-
-  <h1 class="header-title">
-    瑞豐國小
+  <h1>
+    📷 瑞豐國小 QR Code 掃描
   </h1>
 
-  <div class="header-subtitle">
-    QR Code 數位積點系統 V1.2.1
-  </div>
+  <p>
+    數位積點系統 V1.3
+  </p>
 
 </div>
 
@@ -493,28 +270,78 @@
 <div class="container">
 
 
-  <!-- =========================
-       掃描區
-       ========================= -->
+<!-- 啟動 -->
+
+<div
+  id="startPage"
+  class="card center">
+
+
+  <div class="icon">
+    📷
+  </div>
+
+
+  <h2>
+    學生 QR Code 掃描
+  </h2>
+
+
+  <p>
+    請按下方按鈕啟用相機
+  </p>
+
 
   <div
-    id="scanCard"
-    class="card">
-
-    <div class="title">
-
-      掃描學生 QR Code
-
-    </div>
+    id="teacherInfo"
+    class="teacher">
+  </div>
 
 
-    <div class="description">
+  <button
+    class="primary"
+    onclick="startScanner()">
 
-      請將學生 QR Code 放入掃描框中央
+    📷 啟用相機
 
-      <br>
+  </button>
 
-      系統會自動辨識學生資料
+
+  <button
+    class="secondary"
+    onclick="backToSystem()">
+
+    ← 返回積點系統
+
+  </button>
+
+
+  <p class="tip">
+
+    iPhone Chrome 使用 HTTPS 網頁即可使用相機。<br>
+
+    第一次使用時，請選擇「允許」相機權限。
+
+  </p>
+
+
+</div>
+
+
+<!-- 掃描 -->
+
+<div
+  id="scannerPage"
+  class="hidden">
+
+
+  <div class="card">
+
+    <div
+      id="status"
+      class="status">
+
+      📷 正在準備相機……
 
     </div>
 
@@ -522,122 +349,67 @@
     <div id="reader"></div>
 
 
-    <div
-      id="status"
-      class="status info">
-
-      📷 正在啟動相機……
-
-    </div>
-
-
     <button
-      id="retryButton"
-      class="secondary retry hidden"
-      onclick="startCamera()">
+      class="secondary"
+      onclick="stopScanner()">
 
-      🔄 重新啟動相機
+      ⏹ 停止相機
 
     </button>
 
 
-    <div class="help">
+    <button
+      class="secondary"
+      onclick="backToSystem()">
 
-      <strong>
-        iPhone Chrome 相機無法啟動？
-      </strong>
+      ← 返回積點系統
 
-      <br><br>
+    </button>
 
-      請確認：
+  </div>
 
-      <br>
 
-      ① 使用 <strong>Chrome</strong>
+</div>
 
-      <br>
 
-      ② 網址是 <strong>HTTPS</strong>
+<!-- 成功 -->
 
-      <br>
+<div
+  id="successPage"
+  class="hidden">
 
-      ③ 已選擇「允許」使用相機
 
-      <br>
+  <div class="card center">
 
-      ④ 若之前按過拒絕，請到：
 
-      <br>
-
-      Chrome →
-      網址列左側設定 →
-      相機 →
-      允許
-
+    <div class="icon">
+      ✅
     </div>
 
-  </div>
+
+    <h2>
+      掃描成功！
+    </h2>
 
 
-  <!-- =========================
-       成功畫面
-       ========================= -->
-
-  <div
-    id="successCard"
-    class="card hidden">
-
-    <div class="success-box">
-
-      <div class="success-icon">
-        ✅
-      </div>
+    <p>
+      正在回到數位積點系統……
+    </p>
 
 
-      <div class="success-title">
+    <button
+      class="primary"
+      onclick="returnToSystem()">
 
-        掃描成功
+      返回積點系統
 
-      </div>
+    </button>
 
-
-      <p>
-
-        QR Code：
-
-      </p>
-
-
-      <div
-        id="qrResult"
-        class="qr-result">
-      </div>
-
-
-      <p>
-
-        正在返回教師積點系統……
-
-      </p>
-
-    </div>
 
   </div>
 
 
-  <!-- =========================
-       Footer
-       ========================= -->
-
-  <div class="footer">
-
-    瑞豐國小 QR Code 數位積點系統
-
-    <br>
-
-    V1.2.1
-
-  </div>
+</div>
 
 
 </div>
@@ -646,57 +418,487 @@
 <script>
 
 
+let scanner = null;
+
+let scanning = false;
+
+let scanned = false;
+
+
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const teacherId =
+  params.get('teacher') || '';
+
+
+const callbackUrl =
+  params.get('callback') || '';
+
+
 /*************************************************
- * 系統設定
+ * 顯示教師
  *************************************************/
 
+if (teacherId) {
 
-let html5QrCode = null;
-
-let scannerStarted = false;
-
-let scanLocked = false;
-
-
-/*************************************************
- * 取得網址參數
- *************************************************/
-
-function getParameter(
-  name
-) {
-
-  const params =
-    new URLSearchParams(
-      window.location.search
-    );
-
-  return params.get(name);
+  document
+    .getElementById(
+      'teacherInfo'
+    )
+    .innerText =
+    '👨‍🏫 教師掃描模式';
 
 }
 
 
 /*************************************************
- * 設定狀態
+ * 建立回傳網址
+ *************************************************/
+
+function buildCallbackUrl(
+  qr
+) {
+
+  if (!callbackUrl) {
+
+    return '';
+
+  }
+
+
+  try {
+
+    const url =
+      new URL(
+        callbackUrl
+      );
+
+
+    url.searchParams.set(
+      'teacher',
+      teacherId
+    );
+
+
+    url.searchParams.set(
+      'qr',
+      qr
+    );
+
+
+    return url.toString();
+
+  } catch (error) {
+
+    return '';
+
+  }
+
+}
+
+
+/*************************************************
+ * 啟動相機
+ *************************************************/
+
+async function startScanner() {
+
+  if (scanning) {
+
+    return;
+
+  }
+
+
+  if (!teacherId) {
+
+    showError(
+      '缺少教師資訊，請從教師積點系統重新開啟掃描器。'
+    );
+
+    return;
+
+  }
+
+
+  if (!callbackUrl) {
+
+    showError(
+      '缺少回傳網址，請確認 Google Apps Script V1.3 設定。'
+    );
+
+    return;
+
+  }
+
+
+  scanned = false;
+
+
+  document
+    .getElementById(
+      'startPage'
+    )
+    .classList
+    .add('hidden');
+
+
+  document
+    .getElementById(
+      'scannerPage'
+    )
+    .classList
+    .remove('hidden');
+
+
+  setStatus(
+    '📷 正在啟動 iPhone 相機……'
+  );
+
+
+  try {
+
+    scanner =
+      new Html5Qrcode(
+        'reader'
+      );
+
+
+    /*
+     * 優先使用後置相機
+     */
+
+    const config = {
+
+      fps: 10,
+
+      qrbox: function(
+        viewfinderWidth,
+        viewfinderHeight
+      ) {
+
+        const size =
+          Math.min(
+            viewfinderWidth,
+            viewfinderHeight
+          ) * 0.72;
+
+        return {
+          width: Math.floor(size),
+          height: Math.floor(size)
+        };
+
+      },
+
+      aspectRatio: 1.0,
+
+      disableFlip: false
+
+    };
+
+
+    await scanner.start(
+
+      {
+        facingMode: {
+          exact: 'environment'
+        }
+      },
+
+      config,
+
+      onScanSuccess,
+
+      onScanFailure
+
+    );
+
+
+    scanning = true;
+
+
+    setStatus(
+      '📷 請將學生 QR Code 放入框內'
+    );
+
+
+  } catch (error) {
+
+    console.error(
+      error
+    );
+
+
+    /*
+     * 如果 exact environment
+     * 不成功，再嘗試一般 environment
+     */
+
+    try {
+
+      if (scanner) {
+
+        await scanner.clear();
+
+      }
+
+      scanner =
+        new Html5Qrcode(
+          'reader'
+        );
+
+
+      await scanner.start(
+
+        {
+          facingMode: 'environment'
+        },
+
+        config,
+
+        onScanSuccess,
+
+        onScanFailure
+
+      );
+
+
+      scanning = true;
+
+
+      setStatus(
+        '📷 請將學生 QR Code 放入框內'
+      );
+
+
+    } catch (error2) {
+
+      console.error(
+        error2
+      );
+
+
+      showError(
+        getCameraErrorMessage(
+          error2
+        )
+      );
+
+    }
+
+  }
+
+}
+
+
+/*************************************************
+ * QR 掃描成功
+ *************************************************/
+
+async function onScanSuccess(
+  decodedText
+) {
+
+  if (scanned) {
+
+    return;
+
+  }
+
+
+  if (!decodedText) {
+
+    return;
+
+  }
+
+
+  scanned = true;
+
+
+  setStatus(
+    '✅ 掃描成功，正在處理……'
+  );
+
+
+  await stopScanner();
+
+
+  const target =
+    buildCallbackUrl(
+      decodedText.trim()
+    );
+
+
+  if (!target) {
+
+    showError(
+      '無法建立回傳網址。'
+    );
+
+    return;
+
+  }
+
+
+  document
+    .getElementById(
+      'scannerPage'
+    )
+    .classList
+    .add('hidden');
+
+
+  document
+    .getElementById(
+      'successPage'
+    )
+    .classList
+    .remove('hidden');
+
+
+  /*
+   * 稍微停留，讓使用者看到成功畫面
+   */
+
+  setTimeout(
+    function() {
+
+      window.location.href =
+        target;
+
+    },
+    500
+  );
+
+}
+
+
+/*************************************************
+ * 掃描失敗
+ *************************************************/
+
+function onScanFailure(
+  errorMessage
+) {
+
+  /*
+   * 正常掃描中會大量觸發
+   * 不需要顯示錯誤
+   */
+
+}
+
+
+/*************************************************
+ * 停止相機
+ *************************************************/
+
+async function stopScanner() {
+
+  if (!scanner) {
+
+    scanning = false;
+
+    return;
+
+  }
+
+
+  try {
+
+    if (scanning) {
+
+      await scanner.stop();
+
+    }
+
+  } catch (error) {
+
+    console.log(
+      error
+    );
+
+  }
+
+
+  try {
+
+    await scanner.clear();
+
+  } catch (error) {
+
+    console.log(
+      error
+    );
+
+  }
+
+
+  scanner = null;
+
+  scanning = false;
+
+}
+
+
+/*************************************************
+ * 回到系統
+ *************************************************/
+
+function backToSystem() {
+
+  stopScanner();
+
+  returnToSystem();
+
+}
+
+
+/*************************************************
+ * 返回 Google Apps Script
+ *************************************************/
+
+function returnToSystem() {
+
+  if (callbackUrl) {
+
+    window.location.href =
+      callbackUrl;
+
+    return;
+
+  }
+
+
+  window.history.back();
+
+}
+
+
+/*************************************************
+ * 顯示狀態
  *************************************************/
 
 function setStatus(
-  message,
-  type
+  message
 ) {
 
   const status =
     document.getElementById(
-      "status"
+      'status'
     );
 
 
   status.className =
-    "status " +
-    (type || "info");
+    'status';
 
 
-  status.innerHTML =
+  status.innerText =
     message;
 
 }
@@ -710,617 +912,135 @@ function showError(
   message
 ) {
 
-  setStatus(
-    "❌ " +
-    escapeHtml(message),
-    "error"
-  );
+  const startPage =
+    document.getElementById(
+      'startPage'
+    );
 
 
-  document
-    .getElementById(
-      "retryButton"
-    )
+  const scannerPage =
+    document.getElementById(
+      'scannerPage'
+    );
+
+
+  startPage
     .classList
-    .remove("hidden");
-
-}
+    .add('hidden');
 
 
-/*************************************************
- * 啟動相機
- *************************************************/
-
-async function startCamera() {
-
-  if (scanLocked) {
-
-    return;
-
-  }
-
-
-  scanLocked = false;
-
-
-  document
-    .getElementById(
-      "retryButton"
-    )
+  scannerPage
     .classList
-    .add("hidden");
+    .remove('hidden');
 
 
-  setStatus(
-    "📷 正在啟動相機……",
-    "info"
-  );
-
-
-  /*
-   * 確認 HTTPS
-   */
-
-  if (
-    location.protocol !== "https:" &&
-    location.hostname !== "localhost"
-  ) {
-
-    showError(
-      "此網站不是 HTTPS，iPhone Chrome 無法使用相機。"
-    );
-
-    return;
-
-  }
-
-
-  /*
-   * 確認瀏覽器支援
-   */
-
-  if (
-    !navigator.mediaDevices ||
-    !navigator.mediaDevices.getUserMedia
-  ) {
-
-    showError(
-      "目前瀏覽器不支援相機功能。請使用最新版本 Chrome。"
-    );
-
-    return;
-
-  }
-
-
-  try {
-
-
-    /*
-     * 第一步：
-     * 直接向瀏覽器請求相機權限
-     */
-
-    const stream =
-      await navigator
-        .mediaDevices
-        .getUserMedia({
-
-          video: {
-
-            facingMode: {
-              ideal: "environment"
-            }
-
-          },
-
-          audio: false
-
-        });
-
-
-    /*
-     * 取得權限後
-     * 停止測試串流
-     */
-
-    stream
-      .getTracks()
-      .forEach(
-        function(track) {
-
-          track.stop();
-
-        }
-      );
-
-
-    setStatus(
-      "📷 相機已啟用，請對準學生 QR Code。",
-      "success"
+  const status =
+    document.getElementById(
+      'status'
     );
 
 
-    /*
-     * 啟動 QR Code Scanner
-     */
-
-    await createScanner();
+  status.className =
+    'status error';
 
 
-  }
-  catch (error) {
-
-    console.error(
-      "Camera error:",
-      error
-    );
-
-
-    let message =
-      "無法啟用相機。";
-
-
-    if (
-      error.name ===
-      "NotAllowedError"
-    ) {
-
-      message =
-        "相機權限被拒絕。請到 Chrome 的網站設定中，將「相機」改為「允許」。";
-
-    }
-
-
-    else if (
-      error.name ===
-      "NotFoundError"
-    ) {
-
-      message =
-        "找不到可使用的相機。";
-
-    }
-
-
-    else if (
-      error.name ===
-      "NotReadableError"
-    ) {
-
-      message =
-        "相機目前可能正在被其他 App 使用，請關閉其他使用相機的 App 後再試。";
-
-    }
-
-
-    else if (
-      error.name ===
-      "SecurityError"
-    ) {
-
-      message =
-        "瀏覽器安全性設定阻止了相機。請確認目前網址是 HTTPS。";
-
-    }
-
-
-    else if (
-      error.message
-    ) {
-
-      message =
-        error.message;
-
-    }
-
-
-    showError(
-      message
-    );
-
-  }
+  status.innerText =
+    '⚠️ ' +
+    message;
 
 }
 
 
 /*************************************************
- * 建立 QR Scanner
+ * 相機錯誤說明
  *************************************************/
 
-async function createScanner() {
-
-  /*
-   * 如果舊 Scanner 存在
-   * 先清除
-   */
-
-  if (html5QrCode) {
-
-    try {
-
-      await html5QrCode.stop();
-
-    }
-    catch (e) {
-
-      console.log(e);
-
-    }
-
-
-    try {
-
-      html5QrCode.clear();
-
-    }
-    catch (e) {
-
-      console.log(e);
-
-    }
-
-  }
-
-
-  html5QrCode =
-    new Html5Qrcode(
-      "reader"
-    );
-
-
-  /*
-   * 啟動
-   */
-
-  await html5QrCode.start(
-
-    {
-      facingMode: {
-        ideal: "environment"
-      }
-    },
-
-
-    {
-
-      fps: 10,
-
-      qrbox:
-        function(
-          width,
-          height
-        ) {
-
-          const size =
-            Math.floor(
-              Math.min(
-                width,
-                height
-              ) * 0.70
-            );
-
-
-          return {
-
-            width:
-              size,
-
-            height:
-              size
-
-          };
-
-        },
-
-
-      aspectRatio:
-        1.0
-
-    },
-
-
-    /*
-     * 成功辨識
-     */
-
-    function(decodedText) {
-
-      if (scanLocked) {
-
-        return;
-
-      }
-
-
-      scanLocked = true;
-
-
-      handleQRCode(
-        decodedText
-      );
-
-    },
-
-
-    /*
-     * 掃描中錯誤
-     *
-     * 不需要顯示
-     */
-
-    function(errorMessage) {
-
-      // 忽略掃描中的辨識錯誤
-
-    }
-
-  );
-
-
-  scannerStarted = true;
-
-}
-
-
-/*************************************************
- * QR Code 成功
- *************************************************/
-
-async function handleQRCode(
-  qrCode
+function getCameraErrorMessage(
+  error
 ) {
 
-  setStatus(
-    "✅ 掃描成功！",
-    "success"
-  );
-
-
-  document
-    .getElementById(
-      "qrResult"
-    )
-    .innerText =
-    qrCode;
-
-
-  /*
-   * 停止相機
-   */
-
-  await stopCamera();
-
-
-  /*
-   * 顯示成功畫面
-   */
-
-  document
-    .getElementById(
-      "scanCard"
-    )
-    .classList
-    .add("hidden");
-
-
-  document
-    .getElementById(
-      "successCard"
-    )
-    .classList
-    .remove("hidden");
-
-
-  /*
-   * 取得 Apps Script 回傳網址
-   */
-
-  const returnUrl =
-    getParameter(
-      "return"
-    );
-
-
-  const teacher =
-    getParameter(
-      "teacher"
-    );
-
-
-  /*
-   * 沒有 return URL
-   */
-
-  if (!returnUrl) {
-
-    setTimeout(
-      function() {
-
-        alert(
-          "掃描成功：" +
-          qrCode +
-          "\n\n但尚未設定 Google Apps Script 回傳網址。"
-        );
-
-      },
-      300
-    );
-
-    return;
-
-  }
-
-
-  /*
-   * 建立回傳網址
-   */
-
-  const separator =
-    returnUrl.indexOf("?") >= 0
-      ? "&"
-      : "?";
-
-
-  const targetUrl =
-    returnUrl +
-    separator +
-    "qr=" +
-    encodeURIComponent(
-      qrCode
-    ) +
-    "&teacher=" +
-    encodeURIComponent(
-      teacher || ""
-    );
-
-
-  /*
-   * 延遲一點再返回
-   *
-   * 讓使用者看到「掃描成功」
-   */
-
-  setTimeout(
-    function() {
-
-      window.location.href =
-        targetUrl;
-
-    },
-    500
-  );
-
-}
-
-
-/*************************************************
- * 停止相機
- *************************************************/
-
-async function stopCamera() {
-
-  if (
-    html5QrCode &&
-    scannerStarted
-  ) {
-
-    try {
-
-      await html5QrCode.stop();
-
-    }
-    catch (error) {
-
-      console.log(
-        "停止相機：",
+  const message =
+    String(
+      error &&
+      (
+        error.message ||
+        error.name ||
         error
-      );
-
-    }
-
-  }
+      )
+    );
 
 
-  scannerStarted =
-    false;
+  if (
+    message
+      .toLowerCase()
+      .indexOf('permission') >= 0
+  ) {
 
-
-  try {
-
-    if (html5QrCode) {
-
-      html5QrCode.clear();
-
-    }
-
-  }
-  catch (error) {
-
-    console.log(
-      error
+    return (
+      '相機權限被拒絕。請到 iPhone「設定」→「Chrome」→「相機」，允許 Chrome 使用相機。'
     );
 
   }
 
 
-  html5QrCode =
-    null;
+  if (
+    message
+      .toLowerCase()
+      .indexOf('notallowed') >= 0
+  ) {
 
-}
+    return (
+      'Chrome 沒有相機權限，請到 iPhone「設定」→「Chrome」→「相機」開啟權限。'
+    );
+
+  }
 
 
-/*************************************************
- * HTML 安全
- *************************************************/
+  if (
+    message
+      .toLowerCase()
+      .indexOf('notfound') >= 0
+  ) {
 
-function escapeHtml(
-  value
-) {
+    return (
+      '找不到相機，請確認 iPhone 相機功能正常。'
+    );
 
-  return String(
-    value || ""
-  )
+  }
 
-  .replace(
-    /&/g,
-    "&amp;"
-  )
 
-  .replace(
-    /</g,
-    "&lt;"
-  )
+  if (
+    message
+      .toLowerCase()
+      .indexOf('secure') >= 0
+  ) {
 
-  .replace(
-    />/g,
-    "&gt;"
-  )
+    return (
+      '目前網頁不是安全 HTTPS 連線，請使用 GitHub Pages 網址。'
+    );
 
-  .replace(
-    /"/g,
-    "&quot;"
-  )
+  }
 
-  .replace(
-    /'/g,
-    "&#039;"
+
+  return (
+    '無法啟用相機。請確認使用 iPhone Chrome，並允許 Chrome 使用相機。'
   );
 
 }
 
 
 /*************************************************
- * 網頁載入完成
+ * 離開頁面前停止相機
  *************************************************/
 
 window.addEventListener(
-  "load",
+  'pagehide',
   function() {
 
-    /*
-     * 直接啟動相機
-     */
-
-    startCamera();
+    stopScanner();
 
   }
 );
-
-
-/*************************************************
- * 離開頁面時關閉相機
- *************************************************/
-
-window.addEventListener(
-  "pagehide",
-  function() {
-
-    stopCamera();
-
-  }
-);
-
 
 </script>
 
